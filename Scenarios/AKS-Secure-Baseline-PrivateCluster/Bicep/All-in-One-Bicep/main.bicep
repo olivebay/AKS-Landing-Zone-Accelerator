@@ -19,11 +19,11 @@ param deployHub bool = true
 @description('Set this to true if you want your aks cluster to be private')
 param enablePrivateCluster bool = true
 
-param rgHubName string = 'AKS-LZA-HUB'
-param vnetHubName string = 'VNet-HUB'
-param hubVNETaddPrefixes array = ['10.0.0.0/16']
-param azfwName string = 'AZFW'
-param rtVMSubnetName string = 'vm-subnet-rt'
+param rgHubName string = 'rg-meli-northeu'
+param vnetHubName string = 'vnet-meli-hub'
+param hubVNETaddPrefixes array = ['10.100.0.0/16']
+param azfwName string = 'afw-meli-northeu'
+param rtVMSubnetName string = 'vnet-bastion-meli-northeu'
 param fwapplicationRuleCollections array = [
   {
     name: 'Helper-tools'
@@ -53,7 +53,7 @@ param fwapplicationRuleCollections array = [
             'motd.ubuntu.com'
           ]
           sourceAddresses: [
-            '10.1.1.0/24'
+            '10.10.1.0/24'
           ]
         }
       ]
@@ -84,7 +84,7 @@ param fwapplicationRuleCollections array = [
             '*.monitoring.azure.com'
           ]
           sourceAddresses: [
-            '10.1.1.0/24'
+            '10.10.1.0/24'
           ]
         }
         {
@@ -105,7 +105,7 @@ param fwapplicationRuleCollections array = [
             'production.cloudflare.docker.com'
           ]
           sourceAddresses: [
-            '10.1.1.0/24'
+            '10.10.1.0/24'
           ]
         }
         {
@@ -128,7 +128,7 @@ param fwapplicationRuleCollections array = [
             'vortex.data.microsoft.com'
           ]
           sourceAddresses: [
-            '10.1.1.0/24'
+            '10.10.1.0/24'
           ]
         }
         {
@@ -148,7 +148,7 @@ param fwapplicationRuleCollections array = [
             'AzureKubernetesService'
           ]
           sourceAddresses: [
-            '10.1.1.0/24'
+            '10.10.1.0/24'
           ]
         }
       ]
@@ -170,7 +170,7 @@ param fwnetworkRuleCollections array = [
             'UDP'
           ]
           sourceAddresses: [
-            '10.1.1.0/24'
+            '10.10.1.0/24'
           ]
           destinationAddresses: [
             '*'
@@ -185,7 +185,7 @@ param fwnetworkRuleCollections array = [
             'TCP'
           ]
           sourceAddresses: [
-            '10.1.1.0/24'
+            '10.10.1.0/24'
           ]
           destinationAddresses: [
             '*'
@@ -200,7 +200,7 @@ param fwnetworkRuleCollections array = [
             'UDP'
           ]
           sourceAddresses: [
-            '10.1.1.0/24'
+            '10.10.1.0/24'
           ]
           destinationAddresses: [
             '*'
@@ -220,18 +220,18 @@ param availabilityZones array = ['1', '2', '3']
 // 04-Network-LZ
 /////////////////
 
-param rgSpokeName string = 'AKS-LZA-SPOKE'
-param vnetSpokeName string = 'VNet-SPOKE'
+param rgSpokeName string = 'rg-aks-northeu'
+param vnetSpokeName string = 'vnet-aks-northeu'
 //param availabilityZones array = ['1', '2', '3']
-param spokeVNETaddPrefixes array = ['10.1.0.0/16']
-param spokeSubnetDefaultPrefix string = '10.1.0.0/24'
-param spokeSubnetAKSPrefix string = '10.1.1.0/24'
-param spokeSubnetAppGWPrefix string = '10.1.2.0/27'
-param spokeSubnetVMPrefix string = '10.1.3.0/24'
-param spokeSubnetPLinkervicePrefix string = '10.1.4.0/24'
+param spokeVNETaddPrefixes array = ['10.10.0.0/16']
+param spokeSubnetDefaultPrefix string = '10.10.0.0/24'
+param spokeSubnetAKSPrefix string = '10.10.1.0/24'
+param spokeSubnetAppGWPrefix string = '10.10.2.0/27'
+param spokeSubnetVMPrefix string = '10.10.3.0/24'
+param spokeSubnetPLinkervicePrefix string = '10.10.4.0/24'
 param remotePeeringName string = 'spoke-hub-peering'
 param rtAKSSubnetName string = 'AKS-RT'
-param firewallIP string = '10.0.1.4'
+param firewallIP string = '10.100.1.4'
 //param vnetHubName string = 'VNet-HUB'
 param appGatewayName string = 'APPGW'
 //param vnetHUBRGName string = 'AKS-LZA-HUB'
@@ -242,15 +242,15 @@ param rtAppGWSubnetName string = 'AppGWSubnet-RT'
 param appGwyAutoScale object = { maxCapacity: 2, minCapacity: 1 }
 param securityRules array = []
 param defaultSubnetName string = 'default'
-param defaultSubnetAddressPrefix string = '10.0.0.0/24'
+param defaultSubnetAddressPrefix string = '10.100.0.0/24'
 param azureFirewallSubnetName string = 'AzureFirewallSubnet'
-param azureFirewallSubnetAddressPrefix string = '10.0.1.0/26'
+param azureFirewallSubnetAddressPrefix string = '10.100.1.0/26'
 param azureFirewallManagementSubnetName string = 'AzureFirewallManagementSubnet'
-param azureFirewallManagementSubnetAddressPrefix string = '10.0.4.0/26'
+param azureFirewallManagementSubnetAddressPrefix string = '10.100.4.0/26'
 param azureBastionSubnetName string = 'AzureBastionSubnet'
-param azureBastionSubnetAddressPrefix string = '10.0.2.0/27'
+param azureBastionSubnetAddressPrefix string = '10.100.2.0/27'
 param vmsubnetSubnetName string = 'vmsubnet'
-param vmsubnetSubnetAddressPrefix string = '10.0.3.0/24'
+param vmsubnetSubnetAddressPrefix string = '10.100.3.0/24'
 param linuxVirtualMachineVMSize string = 'Standard_DS2_v2'
 
 /////////////////
@@ -300,7 +300,7 @@ param aksadminaccessprincipalId string
 param kubernetesVersion string = '1.30'
 param networkPlugin string = 'azure'
 param aksClusterName string = 'aksCluster'
-param aksVMSize string = 'Standard_D4d_v5'
+param aksVMSize string = 'Standard_D2s_v3'
 
 //////////////////////////////////
 //////////////////////////////////
