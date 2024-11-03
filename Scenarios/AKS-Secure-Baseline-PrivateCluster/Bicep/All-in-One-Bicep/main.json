@@ -25,25 +25,25 @@
     },
     "rgHubName": {
       "type": "string",
-      "defaultValue": "AKS-LZA-HUB"
+      "defaultValue": "rg-meli-dev-hub-northeurope-001"
     },
     "vnetHubName": {
       "type": "string",
-      "defaultValue": "VNet-HUB"
+      "defaultValue": "vnet-meli-dev-hub-northeurope-001"
     },
     "hubVNETaddPrefixes": {
       "type": "array",
       "defaultValue": [
-        "10.0.0.0/16"
+        "10.100.0.0/16"
       ]
     },
     "azfwName": {
       "type": "string",
-      "defaultValue": "AZFW"
+      "defaultValue": "afw-meli-hub-northeurope-001"
     },
     "rtVMSubnetName": {
       "type": "string",
-      "defaultValue": "vm-subnet-rt"
+      "defaultValue": "rt-bas-meli-hub-northeurope-001"
     },
     "fwapplicationRuleCollections": {
       "type": "array",
@@ -76,7 +76,7 @@
                   "motd.ubuntu.com"
                 ],
                 "sourceAddresses": [
-                  "10.1.1.0/24"
+                  "10.10.1.0/24"
                 ]
               }
             ]
@@ -107,7 +107,7 @@
                   "*.monitoring.azure.com"
                 ],
                 "sourceAddresses": [
-                  "10.1.1.0/24"
+                  "10.10.1.0/24"
                 ]
               },
               {
@@ -128,7 +128,7 @@
                   "production.cloudflare.docker.com"
                 ],
                 "sourceAddresses": [
-                  "10.1.1.0/24"
+                  "10.10.1.0/24"
                 ]
               },
               {
@@ -151,7 +151,7 @@
                   "vortex.data.microsoft.com"
                 ],
                 "sourceAddresses": [
-                  "10.1.1.0/24"
+                  "10.10.1.0/24"
                 ]
               },
               {
@@ -171,7 +171,7 @@
                   "AzureKubernetesService"
                 ],
                 "sourceAddresses": [
-                  "10.1.1.0/24"
+                  "10.10.1.0/24"
                 ]
               }
             ]
@@ -196,7 +196,7 @@
                   "UDP"
                 ],
                 "sourceAddresses": [
-                  "10.1.1.0/24"
+                  "10.10.1.0/24"
                 ],
                 "destinationAddresses": [
                   "*"
@@ -211,7 +211,7 @@
                   "TCP"
                 ],
                 "sourceAddresses": [
-                  "10.1.1.0/24"
+                  "10.10.1.0/24"
                 ],
                 "destinationAddresses": [
                   "*"
@@ -226,7 +226,7 @@
                   "UDP"
                 ],
                 "sourceAddresses": [
-                  "10.1.1.0/24"
+                  "10.10.1.0/24"
                 ],
                 "destinationAddresses": [
                   "*"
@@ -263,28 +263,28 @@
     "spokeVNETaddPrefixes": {
       "type": "array",
       "defaultValue": [
-        "10.1.0.0/16"
+        "10.10.0.0/16"
       ]
     },
     "spokeSubnetDefaultPrefix": {
       "type": "string",
-      "defaultValue": "10.1.0.0/24"
+      "defaultValue": "10.10.0.0/24"
     },
     "spokeSubnetAKSPrefix": {
       "type": "string",
-      "defaultValue": "10.1.1.0/24"
+      "defaultValue": "10.10.1.0/24"
     },
     "spokeSubnetAppGWPrefix": {
       "type": "string",
-      "defaultValue": "10.1.2.0/27"
+      "defaultValue": "10.10.2.0/27"
     },
     "spokeSubnetVMPrefix": {
       "type": "string",
-      "defaultValue": "10.1.3.0/24"
+      "defaultValue": "10.10.3.0/24"
     },
     "spokeSubnetPLinkervicePrefix": {
       "type": "string",
-      "defaultValue": "10.1.4.0/24"
+      "defaultValue": "10.10.4.0/24"
     },
     "remotePeeringName": {
       "type": "string",
@@ -589,7 +589,7 @@
             },
             "spokeSubnetAKSPrefix": {
               "type": "string",
-              "defaultValue": "10.1.1.0/24",
+              "defaultValue": "10.10.1.0/24",
               "metadata": {
                 "description": "The prefix for the spoke subnet AKS"
               }
@@ -663,7 +663,7 @@
                           "*.monitoring.azure.com"
                         ],
                         "sourceAddresses": [
-                          "10.1.1.0/24"
+                          "10.10.1.0/24"
                         ]
                       },
                       {
@@ -7822,23 +7822,23 @@
             },
             "spokeSubnetDefaultPrefix": {
               "type": "string",
-              "defaultValue": "10.1.0.0/24"
+              "defaultValue": "10.10.0.0/24"
             },
             "spokeSubnetAKSPrefix": {
               "type": "string",
-              "defaultValue": "10.1.1.0/24"
+              "defaultValue": "10.10.1.0/24"
             },
             "spokeSubnetAppGWPrefix": {
               "type": "string",
-              "defaultValue": "10.1.2.0/27"
+              "defaultValue": "10.10.2.0/27"
             },
             "spokeSubnetVMPrefix": {
               "type": "string",
-              "defaultValue": "10.1.3.0/24"
+              "defaultValue": "10.10.3.0/24"
             },
             "spokeSubnetPLinkervicePrefix": {
               "type": "string",
-              "defaultValue": "10.1.4.0/24"
+              "defaultValue": "10.10.4.0/24"
             },
             "remotePeeringName": {
               "type": "string",
